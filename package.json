@@ -1,0 +1,19 @@
+{
+    "name": "dastro",
+    "version": "0.0.1",
+    "description": "",
+    "main": "index.js",
+    "bin": {
+        "create-dastro": "index.js"
+    },
+    "files": [
+        "dist",
+        "src"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
