@@ -1,0 +1,64 @@
+---
+import TabGroup from './tabs/group.astro'
+import { Sidebar } from '../../constants'
+
+const pathname = Astro.url.pathname
+
+type ListItem = {
+    text: string
+    link: string
+}
+
+type Section = {
+    section: string
+    tab: string
+    list: Array<ListItem>
+}
+
+const sectionList: Array<Section> = []
+
+Object.keys(Sidebar).forEach((tabname) => {
+    Object.keys(Sidebar[tabname]).forEach((sectionname) => {
+        const section: Section = {
+            section: sectionname.trim().toLowerCase().replace(' ', '-'),
+            tab: tabname.trim().toLowerCase().replace(' ', '-'),
+            list: [],
+        }
+
+        for (const item of Sidebar[tabname][sectionname]) {
+            section.list.push({
+                ...item,
+            })
+        }
+
+        sectionList.push(section)
+    })
+})
+---
+
+<aside>
+    <nav>
+        <TabGroup lists={sectionList} />
+
+        <div>
+            {
+                sectionList.map(({ tab, list }) => {
+                    return (
+                        <ol class={`nav-group tab-` + tab}>
+                            {list.map((item) => {
+                                return (
+                                    <li>
+                                        <a href={`/${item.link}`}>
+                                            {item.text}
+                                        </a>
+                                    </li>
+                                )
+                            })}
+                        </ol>
+                    )
+                })
+            }
+            <li></li>
+        </div>
+    </nav>
+</aside>

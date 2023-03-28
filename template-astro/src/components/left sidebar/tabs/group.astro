@@ -1,0 +1,12 @@
+---
+import Tab from './tab.vue'
+import { Sidebar } from '../../../constants'
+---
+
+<div class="max-w-xs w-full fixed bottom-0">
+    {
+        Object.keys(Sidebar).map((tabname) => {
+            return <Tab tabname={tabname} client:visible />
+        })
+    }
+</div>
