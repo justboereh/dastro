@@ -1,6 +1,7 @@
 export const Site = {
     title: 'Documentation',
     description: 'Your website description.',
+    homepage: '/docs/introduction',
 } as const
 
 export const Open_Graph = {

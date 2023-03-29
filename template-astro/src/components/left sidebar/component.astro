@@ -20,8 +20,8 @@ const sectionList: Array<Section> = []
 Object.keys(Sidebar).forEach((tabname) => {
     Object.keys(Sidebar[tabname]).forEach((sectionname) => {
         const section: Section = {
-            section: sectionname.trim().toLowerCase().replace(' ', '-'),
-            tab: tabname.trim().toLowerCase().replace(' ', '-'),
+            section: sectionname.trim().toLowerCase().replaceAll(' ', '-'),
+            tab: tabname.trim().toLowerCase().replaceAll(' ', '-'),
             list: [],
         }
 
